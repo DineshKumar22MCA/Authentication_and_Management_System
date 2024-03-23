@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Athentication</title>
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f4f4f4;
+          margin: 0;
+          padding: 0;
+      }
+
+      h2 {
+          color: #333;
+          text-align: center;
+      }
+
+      form {
+          max-width: 300px;
+          margin: 20px auto;
+          padding: 20px;
+          background-color: #fff;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      label {
+          display: block;
+          margin-bottom: 8px;
+          color: #333;
+          font-size: 14px; /* Adjust font size */
+      }
+
+      input[type="text"],
+      input[type="password"] {
+          width: calc(100% - 10px); /* Adjust width */
+          padding: 8px; /* Adjust padding */
+          margin-bottom: 12px; /* Adjust margin */
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          box-sizing: border-box;
+          font-size: 14px; /* Adjust font size */
+      }
+
+      input[type="submit"] {
+          background-color: #3498db;
+          color: #fff;
+          padding: 10px 20px; /* Adjust padding */
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 16px; /* Adjust font size */
+      }
+
+      input[type="submit"]:hover {
+          background-color: #1f618d;
+      }
+      button {
+        margin-top: 10px;
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    button a {
+        text-decoration: none;
+        color: #fff;
+    }
+
+    button:hover {
+        background-color: #1f618d;
+    }
+      button {
+          text-align: center;
+          background-color: #3498db;
+          color: #fff;
+          padding: 10px 20px; /* Adjust padding */
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 16px; /* Adjust font size */
+          margin-top: 25px;
+          text-align: center;
+          font-size: 14px; /* Adjust font size */
+          text-decoration: none;
+      } 
+  </style>
+  </head>
+  <body>
+    <h2> Admin signin </h2>
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+
+    <form action='' method="post">
+
+      {% csrf_token %}
+
+      <label>User Name </label>
+      <input type="text" name="user_name" required>
+
+      <label>Password </label>
+      <input type="password" name="password" required>
+
+      <input type="submit" value="signin">
+      
+
+    </form>
+
+    {% comment %} <a href = {% url "index" %}> <input type="submit" value="back home"> </a> {% endcomment %}
+
+    <br>
+    <button> <a href = {% url "index" %}>          <input type="submit" value="back home">       </a> </button>
+    <button> <a href="{% url "reset_password" %}"> <input type="submit" value="password reset">  </a></button>
+  </body>
+</html>
